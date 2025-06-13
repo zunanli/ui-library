@@ -1,35 +1,51 @@
 {
-  "name": "vite",
-  "private": true,
-  "version": "0.0.0",
+  "name": "ui-library",
+  "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js",
+      "require": "./dist/components/*/index.cjs"
+    },
+    "./themes": {
+      "types": "./dist/themes/index.d.ts",
+      "import": "./dist/themes/index.js",
+      "require": "./dist/themes/index.cjs"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
+    }
   },
-  "dependencies": {
-    "@radix-ui/react-primitive": "^2.1.0",
-    "@types/styled-components": "^5.1.34",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "styled-components": "^6.1.17",
-    "tailwindcss": "^4.1.4"
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
-    "@types/node": "^22.15.2",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.22.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.0.0",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.1",
-    "vite-plugin-dts": "^4.5.3"
+    "@types/react": "^18.0.0",
+    "@types/styled-components": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
   }
 }

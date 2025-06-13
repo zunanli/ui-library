@@ -1,3 +1,25 @@
+export interface ColorTokens {
+  primary: string;
+  background: string;
+}
+
+export interface SharedTokens {
+  spacing: {
+    sm: string;
+  }
+}
+
+export interface ThemeTokens extends SharedTokens {
+  color: ColorTokens;
+}
+
+export interface ThemeVariants {
+  light: ThemeTokens;
+  dark: ThemeTokens;
+}
+
+export type ThemeMode = 'light' | 'dark';
+
 export interface ThemeTokens {
   colors: {
     primary: string;

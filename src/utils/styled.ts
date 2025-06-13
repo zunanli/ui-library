@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type { IStyledComponent } from 'styled-components';
-import { ThemeTokens } from '../themes/tokens';
+import { ThemeTokens } from '../types/theme';
 import React from 'react';
 
 export const themed = styled as unknown as <T extends keyof React.JSX.IntrinsicElements | IStyledComponent<any, any>>(
@@ -11,8 +11,8 @@ export type ThemeProps = {
   theme: ThemeTokens;
 };
 
-export const getColor = (color: keyof ThemeTokens['colors']) => {
-  return ({ theme }: ThemeProps) => theme.colors[color];
+export const getColor = (colorKey: keyof ThemeTokens['color']) => {
+  return ({ theme }: ThemeProps) => theme.color[colorKey];
 };
 
 export const getSpacing = (space: keyof ThemeTokens['spacing']) => {
